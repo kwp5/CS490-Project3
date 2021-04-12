@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+}
+
+.login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -25px;
+    color: white;
+}
+
+.title {
+    margin-top: -350px;
+    margin-left: -185px;
+    font-size: 45px;
+}
+
+.button {
+    margin-top: -100px;
+    margin-left: 10px;
+}
+
+.textcenter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -100px;
+    color: white;
+}
