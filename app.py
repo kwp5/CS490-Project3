@@ -1,8 +1,9 @@
 import os
-from flask import Flask, send_from_directory, json
+from flask import Flask, send_from_directory, json, request
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+import time
 
 app = Flask(__name__, static_folder='./build/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -22,6 +23,25 @@ socketio = SocketIO(
 @app.route('/<path:filename>')
 def index(filename):
     return send_from_directory('./build', filename)
+
+#api call for the POST request, just adds users into db so far, prob will split functionality
+@app.route('/login', methods=['POST'])
+def login():
+    
+    user = request.get_json()['user']['name']
+    email = request.get_json()['email']['email']
+        
+    is_in_database = bool(
+        db.session.query(models.Person).filter_by(username=user).first())
+    if not is_in_database:
+        user_and_email_added = models.Person(username=user, email=email)
+        db.session.add(user_and_email_added)
+        db.session.commit()
+        print("user added to db")
+    else:
+        print("return user") #TODO: Find out what to do with return users, will they automatically have their account linked and need for else logic here(???)
+    return (user)
+
 if __name__ == '__main__':
     import models
     db.create_all()
@@ -29,5 +49,3 @@ if __name__ == '__main__':
         host=os.getenv('IP', '0.0.0.0'),
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
     )
-
-
