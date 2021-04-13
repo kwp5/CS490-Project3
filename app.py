@@ -30,7 +30,8 @@ def login():
     
     user = request.get_json()['user']['name']
     email = request.get_json()['email']['email']
-        
+    print(str(email))
+    print(str(user))
     is_in_database = bool(
         db.session.query(models.Person).filter_by(username=user).first())
     if not is_in_database:
