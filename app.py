@@ -34,13 +34,6 @@ def login():
     print(str(user))
     is_in_database = bool(
         db.session.query(models.Person).filter_by(username=user).first())
-    userData = db.session.query(models.Person).filter_by(username=user).first()
-    userID = userData.id
-    classInfo = db.session.query(models.Blocks).filter_by(studentID=userID).first()
-    print(classInfo)
-    print("----------\n")
-    print(str(classInfo.className))
-    print(str(classInfo.classSection))
     if not is_in_database:
         user_and_email_added = models.Person(username=user, email=email)
         db.session.add(user_and_email_added)
@@ -48,11 +41,20 @@ def login():
         print("user added to db")
     else:
         print("return user") #TODO: Find out what to do with return users, will they automatically have their account linked and need for else logic here(???)
-    return (user)
+    return user
 def blockPull():
     user = request.get_json()['user']['name']
     userData = db.session.query(models.Person).filter_by(username=user).first()
     print(str(userData))
+    
+def classInfo(user):
+    userData = db.session.query(models.Person).filter_by(username=user).first()
+    userID = userData.id
+    classInfo = db.session.query(models.Blocks).filter_by(studentID=userID).first()
+    print(classInfo)
+    print("----------\n")
+    print(str(classInfo.className))
+    print(str(classInfo.classSection))
     
 if __name__ == '__main__':
     import models
