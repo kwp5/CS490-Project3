@@ -48,6 +48,7 @@ def blockPull():
     print(str(userData))
     
 def classInfo(user):
+    user = user
     userData = db.session.query(models.Person).filter_by(username=user).first()
     userID = userData.id
     classInfo = db.session.query(models.Blocks).filter_by(studentID=userID).first()
