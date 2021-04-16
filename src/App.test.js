@@ -1,8 +1,8 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import Login from "./Login";
-import App from "./App";
+import { render, screen, fireEvent } from '@testing-library/react';
+import Login from './Login';
+import App from './App';
 
-test("Verify Login completes", () => {
+test('Verify Login completes', () => {
   let result = render(<Login />);
   const loginElement = screen.getByText('Login with Google');
   expect(loginElement).toBeInTheDocument();
