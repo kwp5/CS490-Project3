@@ -1,5 +1,5 @@
 import os
-from flask import Flask, send_from_directory, json, request
+from flask import Flask, send_from_directory, json, request, Response
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -9,7 +9,6 @@ app = Flask(__name__, static_folder='./build/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
 
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 socketio = SocketIO(
@@ -53,7 +52,22 @@ def blockPull():
     user = request.get_json()['user']['name']
     userData = db.session.query(models.Person).filter_by(username=user).first()
     print(str(userData))
-    
+
+@app.route('/invite', methods=['GET'])
+def invite():
+    if 'email' in request.args:
+        email = request.args['email']
+    else:
+        return Response("Error: No Email Provided", status=400)
+    is_in_database = bool(
+        db.session.query(models.Person).filter_by(email=email).first())
+    if not is_in_database:
+        return Response("Error: No User With The Email Provided", status=400)
+    user_data = db.session.query(models.Person).filter_by(email=email).first()
+    user_id = user_data.id
+    class_info = db.session.query(models.Blocks).filter_by(studentID=user_id)
+    return Response(class_info, status=200)
+
 if __name__ == '__main__':
     import models
     db.create_all()

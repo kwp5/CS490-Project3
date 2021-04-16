@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import Grouping from './AddGroup.js'
 
 function App(props) {
   const { name } = props;
@@ -21,9 +22,14 @@ function App(props) {
 });
   
   return (
-    <div id="text" className="textcenter">
-      {name}
-      {email}
+    <div>
+      <div id="text" className="textcenter">
+        {name}
+        {email}
+      </div>
+      <div>
+        <Grouping />
+      </div>
     </div>
   );
 }
