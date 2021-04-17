@@ -6,9 +6,9 @@ export default function Grouping() {
   const inputRef = useRef(null);
   const [groupData, setGroupData] = useState([]);
   function inviteUser() {
-    const url = '/invite?email=' + inputRef;
+    const url = '/invite?email=' + inputRef.current.value;
     fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export default function Grouping() {
   return (
     <div>
       <label for="invUser">User's Email:</label>
-      <input ref={inputRef} type="text" name="invUser" />
+      <input ref={inputRef} type="text" name="new_email" />
       <br />
       <button type="button" onClick={inviteUser}>
         Add to Group
