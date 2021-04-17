@@ -58,6 +58,8 @@ def classInfo(user):
 def invite():
     print("INVITE FUNC")
     
+    """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES""" 
+    
     if 'email' in request.args:
         new_email = request.args['email']
         print(new_email)
