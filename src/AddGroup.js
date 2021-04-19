@@ -18,9 +18,16 @@ export default function Grouping() {
       .then((responseData) => {
         setGroupData(responseData.class);
       });
-      console.log(groupData);
+  
   }
-
+  
+  var divStyle = {
+  color: 'RED',
+  WebkitTransition: 'all', // note the capital 'W' here
+  msTransition: 'all' 
+};
+  
+console.log(groupData);
   return (
     <div>
       <label for="invUser">User's Email:</label>
@@ -29,7 +36,9 @@ export default function Grouping() {
       <button type="button" onClick={inviteUser}>
         Add to Group
       </button>
-      <div>{groupData}</div>
+      <div style={divStyle}> {groupData} </div>
     </div>
   );
 }
+
+

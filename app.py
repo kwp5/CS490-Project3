@@ -24,9 +24,10 @@ socketio = SocketIO(
 def index(filename):
     return send_from_directory('./build', filename)
 
-#api call for the POST request, just adds users into db so far, prob will split functionality
+#api call for the POST request, just adds users into db so far, 
 @app.route('/login', methods=['POST'])
 def login():
+    """USERS WHO LOG IN USING API ARE ADDED TO THE DB HERE"""
     user = request.get_json()['user']['name']
     email = request.get_json()['email']['email']
     print(str(email))
@@ -41,11 +42,14 @@ def login():
     else:
         print("return user") #TODO: Find out what to do with return users, will they automatically have their account linked and need for else logic here(???)
     return user
+    
 def blockPull():
+    """ not a clue -- I think peter did this"""
     user = request.get_json()['user']['name']
     userData = db.session.query(models.Person).filter_by(username=user).first()
     print(str(userData))
 def classInfo(user):
+    """ currently not in use, is the logic behind users class will be added in Sprint2"""
     user = user
     userData = db.session.query(models.Person).filter_by(username=user).first()
     userID = userData.id
@@ -57,10 +61,7 @@ def classInfo(user):
 
 @app.route('/invite', methods=['POST'])
 def invite():
-    print("INVITE FUNC")
-    
-    """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES""" 
-    
+    """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES in the future as well""" 
     if 'email' in request.args:
         new_email = request.args['email']
         mock_class = { "class": "CS490"}
