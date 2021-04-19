@@ -16,7 +16,7 @@ export default function Login() {
       document.getElementById('root'),
     );
   };
-
+  
   return (
     <div>
       <div className="login title">
@@ -27,7 +27,7 @@ export default function Login() {
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
           buttonText="Login with Google"
           onSuccess={success}
-          cookiePolicy="single_host_origin"
+          cookiePolicy='single_host_origin'
         />
       </div>
     </div>

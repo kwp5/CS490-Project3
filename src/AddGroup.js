@@ -6,7 +6,7 @@ export default function Grouping() {
   const inputRef = useRef(null);
   const [groupData, setGroupData] = useState([]);
   function inviteUser() {
-    const url = '/invite?email=' + inputRef;
+    const url = '/invite?email=' + inputRef.current.value;
     fetch(url, {
       method: 'GET',
       headers: {
