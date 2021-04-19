@@ -27,7 +27,7 @@ function App(props) {
         {email}
       </div>
       <div>
-        <Grouping className="textcenter" />
+        <Grouping />
       </div>
     </div>
   );
