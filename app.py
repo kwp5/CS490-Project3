@@ -54,17 +54,23 @@ def classInfo(user):
     print(str(classInfo.className))
     print(str(classInfo.classSection))
 
-@app.route('/invite', methods=['GET'])
+@app.route('/invite', methods=['POST'])
 def invite():
+    print("INVITE FUNC")
+    
+    """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES""" 
+    
     if 'email' in request.args:
-        email = request.args['email']
+        new_email = request.args['email']
+        print(new_email)
     else:
         return Response("Error: No Email Provided", status=400)
+    
     is_in_database = bool(
-        db.session.query(models.Person).filter_by(email=email).first())
+        db.session.query(models.Person).filter_by(email=new_email).first())
     if not is_in_database:
         return Response("Error: No User With The Email Provided", status=400)
-    user_data = db.session.query(models.Person).filter_by(email=email).first()
+    user_data = db.session.query(models.Person).filter_by(email=new_email).first()
     user_id = user_data.id
     class_info = db.session.query(models.Blocks).filter_by(studentID=user_id)
     return Response(class_info, status=200)
