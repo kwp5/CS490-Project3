@@ -16,8 +16,9 @@ export default function Grouping() {
     })
       .then((response) => response.json())
       .then((responseData) => {
-        setGroupData(responseData);
+        setGroupData(responseData.class);
       });
+      console.log(groupData);
   }
 
   return (

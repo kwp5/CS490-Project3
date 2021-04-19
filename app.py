@@ -4,6 +4,7 @@ from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import time
+import json
 
 app = Flask(__name__, static_folder='./build/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -62,7 +63,9 @@ def invite():
     
     if 'email' in request.args:
         new_email = request.args['email']
-        print(new_email)
+        mock_class = { "class": "CS490"}
+        mock_class = json.dumps(mock_class)
+        return mock_class
     else:
         return Response("Error: No Email Provided", status=400)
     
