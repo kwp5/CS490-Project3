@@ -31,7 +31,7 @@ class BoardStatusTestCase(unittest.TestCase):
                         'board': ["", "", "", "", "", "", "", "", ""]
                     },
                     'game_is_live': False,
-                    'user': ""
+                    'user': "",
                 },
                 EXPECTED: {
                     'game_is_live': False
