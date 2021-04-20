@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
 import fetch from 'isomorphic-fetch';
@@ -8,24 +8,24 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Grouping from './AddGroup.js';
 
 function App(props) {
   const { name } = props;
   const { email } = props;
-  
 
   fetch('/login', {
-  method: 'POST',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'user': {name},
-    'email': {email}
-  })
-});
-  
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user: { name },
+      email: { email },
+    }),
+  });
+
   return (
     <div id="text" className="textcenter">
       {name}
@@ -58,6 +58,8 @@ function App(props) {
           </Switch>
         </div>
       </Router>
+      
+      <Grouping />
     </div>
   );
 }
