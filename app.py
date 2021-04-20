@@ -64,9 +64,7 @@ def invite():
     """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES in the future as well""" 
     if 'email' in request.args:
         new_email = request.args['email']
-        mock_class = { "class": "CS490"}
-        mock_class = json.dumps(mock_class)
-        return mock_class
+        return mock_class()
     else:
         return Response("Error: No Email Provided", status=400)
     
@@ -78,6 +76,14 @@ def invite():
     user_id = user_data.id
     class_info = db.session.query(models.Blocks).filter_by(studentID=user_id)
     return Response(class_info, status=200)
+
+def mock_class(class1):
+        
+        class1 = { "class": "CS490"}
+        mock_class = json.dumps(class1)
+        return mock_class
+    
+
 
 if __name__ == '__main__':
     import models
