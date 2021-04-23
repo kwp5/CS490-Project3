@@ -45,10 +45,10 @@ def block_pull():
     print(str(user_data))
 def class_info(user):
     """ currently not in use, is the logic behind users class will be added in Sprint2"""
-    user = user
-    userData = DB.session.query(models.Person).filter_by(username=user).first()
-    userID = userData.id
-    user_class_info = DB.session.query(models.Blocks).filter_by(studentID=userID).first()
+    user = user    # pylint: disable=self-assigning-variable
+    user_data = DB.session.query(models.Person).filter_by(username=user).first() # pylint: disable=no-member
+    user_id = user_data.id
+    user_class_info = DB.session.query(models.Blocks).filter_by(studentID=user_id).first() # pylint: disable=no-member
     print(user_class_info)
     print("----------\n")
     print(str(user_class_info.className))
@@ -57,21 +57,21 @@ def class_info(user):
 @APP.route('/invite', methods=['POST'])
 def invite():
     """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES in the future as well"""
-    if 'email' in request.args:
+    if 'email' in request.args:  # pylint: disable=no-else-return
         new_email = request.args['email']
         class1 = {"class": "CS490"}
         return mock_class(class1)
-    else:
+    else:  # pylint: disable=no-else-return
         return Response("Error: No Email Provided", status=400)
 
     is_in_database = bool(
-        DB.session.query(models.Person).filter_by(email=new_email).first())
+        DB.session.query(models.Person).filter_by(email=new_email).first()) # pylint: disable=no-member
     if not is_in_database:
         return Response("Error: No User With The Email Provided", status=400)
-    user_data = DB.session.query(models.Person).filter_by(email=new_email).first()
+    user_data = DB.session.query(models.Person).filter_by(email=new_email).first() # pylint: disable=no-member
     user_id = user_data.id
-    class_info = DB.session.query(models.Blocks).filter_by(studentID=user_id)
-    return Response(class_info, status=200)
+    user_class_info = DB.session.query(models.Blocks).filter_by(studentID=user_id) # pylint: disable=no-member
+    return Response(user_class_info, status=200)
 
 def mock_class(class1):
     """ Mocked data for scheduled classes"""
