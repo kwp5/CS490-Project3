@@ -1,57 +1,41 @@
 import unittest
 import os
 import sys
+from flask import Flask
 
 sys.path.append(os.path.abspath('../../'))
-from app import board_status
+from app import index
 import models
 
-INPUT = 'game_status'
-EXPECTED = 'expected'
+INPUT = 'index.html'
+EXPECTED = 'index.html'
 
 
-class BoardStatusTestCase(unittest.TestCase):
+class indexTestCase(unittest.TestCase):
     def setUp(self):
         self.success_test_params = [
             {
-                INPUT: {
-                    'board': {
-                        'board': ["X", "", "", "", "", "", "", "", ""]
-                    },
-                    'game_is_live': True,
-                    'user': "Maamon",
-                },
-                EXPECTED: {
-                    'board': ["X", "", "", "", "", "", "", "", ""]
-                }
-            },
-            {
-                INPUT: {
-                    'board': {
-                        'board': ["", "", "", "", "", "", "", "", ""]
-                    },
-                    'game_is_live': False,
-                    'user': "",
-                },
-                EXPECTED: {
-                    'game_is_live': False
-                }
+                INPUT: "index.html" ,
+                EXPECTED: "index.html" ,
             },
         ]
 
     def test_success(self):
         for test in self.success_test_params:
-            print(
-                board_status(test[INPUT]['board'], test[INPUT]['game_is_live'],
-                             test[INPUT]['user']))
-            actual = (board_status(test[INPUT]['board'],
-                                   test[INPUT]['game_is_live'],
-                                   test[INPUT]['user']))
-            expected = test[EXPECTED]
-            print(expected)
-            self.assertEqual(actual, expected)
-            self.assertIsInstance(actual, dict)
+            def create_app():
+                app = Flask(__name__)
 
+                with app.app_context():
+                
+
+                
+                    print(index(test[INPUT]))
+                    actual = (index(test[INPUT]))
+                    expected = test[EXPECTED]
+                    print(expected)
+                    self.assertEqual(actual, expected)
+            
+            
 
 if __name__ == '__main__':
     unittest.main()
