@@ -36,7 +36,7 @@ console.log(groupData);
       <button type="button" onClick={inviteUser}>
         Add to Group
       </button>
-      <div style={divStyle}> {groupData} </div>
+      <div style={divStyle}> User is In classes: {groupData} </div>
     </div>
   );
 }

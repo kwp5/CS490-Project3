@@ -1,3 +1,4 @@
+"""Flask backend for Calender  App"""
 import os
 from flask import Flask, send_from_directory, json, request, Response
 from flask_socketio import SocketIO
@@ -24,7 +25,7 @@ socketio = SocketIO(
 def index(filename):
     return send_from_directory('./build', filename)
 
-#api call for the POST request, just adds users into db so far, 
+#api call for the POST request, just adds users into db so far,
 @app.route('/login', methods=['POST'])
 def login():
     """USERS WHO LOG IN USING API ARE ADDED TO THE DB HERE"""
@@ -40,9 +41,8 @@ def login():
         db.session.commit()
         print("user added to db")
     else:
-        print("return user") #TODO: Find out what to do with return users, will they automatically have their account linked and need for else logic here(???)
+        print("return user")
     return user
-    
 def blockPull():
     """ not a clue -- I think peter did this"""
     user = request.get_json()['user']['name']
@@ -61,15 +61,14 @@ def classInfo(user):
 
 @app.route('/invite', methods=['POST'])
 def invite():
-    """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES in the future as well""" 
+    """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES in the future as well"""
     if 'email' in request.args:
         new_email = request.args['email']
-        mock_class = { "class": "CS490"}
-        mock_class = json.dumps(mock_class)
-        return mock_class
+        class1 = {"class": "CS490"}
+        return mock_class(class1)
     else:
         return Response("Error: No Email Provided", status=400)
-    
+
     is_in_database = bool(
         db.session.query(models.Person).filter_by(email=new_email).first())
     if not is_in_database:
@@ -78,6 +77,13 @@ def invite():
     user_id = user_data.id
     class_info = db.session.query(models.Blocks).filter_by(studentID=user_id)
     return Response(class_info, status=200)
+
+def mock_class(class1):
+    """ Mocked data for scheduled classes"""
+    class1 = {"class": "CS490"}
+    mock_class = json.dumps(class1)
+    return mock_class
+
 
 if __name__ == '__main__':
     import models

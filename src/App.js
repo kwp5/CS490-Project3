@@ -124,7 +124,6 @@ function Add() {
     			<label htmlFor="dayChoice6">Saturday</label>
     		</div>
     		
-    		<input type="submit" value="Submit class" />
     	</form>
     );
 }
