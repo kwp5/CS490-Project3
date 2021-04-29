@@ -5,7 +5,6 @@ import fetch from 'isomorphic-fetch';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Grouping from './AddGroup.js';
 
-const [groupData, setGroupData] = useState([]);
 function sendInfo(email) {
   fetch('/addclass', {
     method: 'POST',
@@ -20,6 +19,7 @@ function sendInfo(email) {
 }
 
 function App(props) {
+  const [groupData, setGroupData] = useState([]);
   const { name } = props;
   const { email } = props;
   const url = '/invite?email=' + email;
