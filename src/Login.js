@@ -34,7 +34,7 @@ export default function Login() {
               </div>
               <div>
                 <GoogleLogin
-                  clientId="595384762593-s8u1lg7m0frjla6gpl0kgkl8307l18rq.apps.googleusercontent.com"
+                  clientId= "799785478369-kdbdvff205k03cma7c43iu5bd9gbhcsv.apps.googleusercontent.com"/*"595384762593-s8u1lg7m0frjla6gpl0kgkl8307l18rq.apps.googleusercontent.com" */ 
                   buttonText="Login with Google"
                   onSuccess={success}
                   cookiePolicy="single_host_origin"

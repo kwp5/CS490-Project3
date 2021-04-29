@@ -5,6 +5,10 @@ import fetch from 'isomorphic-fetch';
 export default function Grouping() {
   const inputRef = useRef(null);
   const [groupData, setGroupData] = useState([]);
+  const [groupSection, setGroupSection] = useState([]);
+  const [groupStartTime, setGroupStartTime] = useState([]);
+  const [groupEndTime, setGroupEndTime] = useState([]);
+  const [groupDay, setGroupDay] = useState([]);
   function inviteUser() {
     const url = '/invite?email=' + inputRef.current.value;
     fetch(url, {
@@ -17,6 +21,10 @@ export default function Grouping() {
       .then((response) => response.json())
       .then((responseData) => {
         setGroupData(responseData.class);
+        setGroupSection(responseData.section);
+        setGroupStartTime(responseData['start time']);
+        setGroupEndTime(responseData['end time']);
+        setGroupDay(responseData.day);
       });
   }
 
@@ -29,7 +37,7 @@ export default function Grouping() {
       <button type="button" onClick={inviteUser}>
         Add to Group
       </button>
-      <div> {groupData} </div>
+      <div> {groupData} {groupSection} {groupStartTime} {groupEndTime} {groupDay} </div>
     </div>
   );
 }

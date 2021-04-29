@@ -48,6 +48,7 @@ function App(props) {
         setGroupData(responseData.class);
       });
   }
+
   
   getInfo();
 
@@ -92,7 +93,7 @@ function App(props) {
           </div>
         </Router>
         <div>
-          {groupData}
+    
         </div>
       </div>
       <div>
