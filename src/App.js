@@ -5,11 +5,36 @@ import fetch from 'isomorphic-fetch';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Grouping from './AddGroup.js';
 
+const [groupData, setGroupData] = useState([]);
+function sendInfo(email) {
+  fetch('/addclass', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+      body: JSON.stringify({
+      email: { email },
+    }),
+  });
+}
+
 function App(props) {
   const { name } = props;
   const { email } = props;
-  const [groupData, setGroupData] = useState([]);
   const url = '/invite?email=' + email;
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user: { name },
+      email: { email },
+    }),
+  });
+
   function getInfo() {
     fetch(url, {
       method: 'POST',
@@ -23,19 +48,7 @@ function App(props) {
         setGroupData(responseData.class);
       });
   }
-  function sendInfo() {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        setGroupData(responseData.class);
-      });
-  }
+  
   getInfo();
 
   return (
@@ -65,7 +78,7 @@ function App(props) {
                 renders the first one that matches the current URL. */}
             <Switch>
               <Route path="/add">
-                <Add />
+                <Add email={email} />
               </Route>
   
               <Route path="/grouping">
@@ -103,7 +116,8 @@ function Home() {
   return <h3>Welcome to Study Dates</h3>;
 }
 
-function Add() {
+function Add(props) {
+  const { email } = props;
   return (
     <form class="form">
       <div>Please input your course information.</div>
@@ -156,7 +170,7 @@ function Add() {
       </div>
       
       <div>
-        <button onclick="sendInfo()">Submit</button>
+        <button onclick={() => sendInfo(email)}>Submit</button>
       </div>
     </form>
   );
