@@ -27,14 +27,15 @@ export default function Login() {
               <div>
                 <h1 class="login title">Study Dates</h1>
                 <p class="login text">
-                  A new way to view and schedule classes apart from NJIT's website system. Connect
+                  A new way to view and schedule classes apart from NJIT's website <br />system. Connect
                   your Google account to log in and start scheduling. <br /> Read more below about
                   the features.
                 </p>
               </div>
               <div>
                 <GoogleLogin
-                  clientId= "799785478369-kdbdvff205k03cma7c43iu5bd9gbhcsv.apps.googleusercontent.com"/*"595384762593-s8u1lg7m0frjla6gpl0kgkl8307l18rq.apps.googleusercontent.com" */ 
+                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                  clientId= "595384762593-s8u1lg7m0frjla6gpl0kgkl8307l18rq.apps.googleusercontent.com"  
                   buttonText="Login with Google"
                   onSuccess={success}
                   cookiePolicy="single_host_origin"

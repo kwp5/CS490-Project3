@@ -12,7 +12,7 @@ function sendInfo(email) {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-      body: JSON.stringify({
+    body: JSON.stringify({
       email: { email },
     }),
   });
@@ -49,7 +49,10 @@ function App(props) {
       });
   }
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> ff0a11a4fd2420864b6bab1bbfcfd0a331fe932e
   getInfo();
 
   return (
@@ -58,43 +61,53 @@ function App(props) {
         {name}
         <br />
         {email}
-  
+
         <Router>
           <div>
             <nav>
               <ul>
                 <li>
-                  <Link class="login" to="/">Home</Link>
+                  <Link class="login" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link class="login" to="/add">Add a class</Link>
+                  <Link class="login" to="/add">
+                    Add a class
+                  </Link>
                 </li>
                 <li>
-                  <Link class="login" to="/grouping">Form a group</Link>
+                  <Link class="login" to="/grouping">
+                    Form a group
+                  </Link>
                 </li>
               </ul>
             </nav>
-  
+
             {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
             <Switch>
               <Route path="/add">
                 <Add email={email} />
               </Route>
-  
+
               <Route path="/grouping">
                 <Grouping />
               </Route>
-  
+
               <Route path="/">
                 <Home />
               </Route>
             </Switch>
           </div>
         </Router>
+<<<<<<< HEAD
         <div>
-    
+          {groupData}
         </div>
+=======
+        <div>{groupData}</div>
+>>>>>>> ff0a11a4fd2420864b6bab1bbfcfd0a331fe932e
       </div>
       <div>
         <footer class="footer-text">
@@ -169,7 +182,7 @@ function Add(props) {
         <input type="radio" id="dayChoice6" name="day" value="6" />
         <label htmlFor="dayChoice6">Saturday</label>
       </div>
-      
+
       <div>
         <button onclick={() => sendInfo(email)}>Submit</button>
       </div>
