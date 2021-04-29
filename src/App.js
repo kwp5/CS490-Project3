@@ -49,10 +49,7 @@ function App(props) {
       });
   }
 
-<<<<<<< HEAD
-  
-=======
->>>>>>> ff0a11a4fd2420864b6bab1bbfcfd0a331fe932e
+
   getInfo();
 
   return (
@@ -101,13 +98,8 @@ function App(props) {
             </Switch>
           </div>
         </Router>
-<<<<<<< HEAD
-        <div>
-          {groupData}
         </div>
-=======
-        <div>{groupData}</div>
->>>>>>> ff0a11a4fd2420864b6bab1bbfcfd0a331fe932e
+        <div>
       </div>
       <div>
         <footer class="footer-text">
