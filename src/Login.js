@@ -34,7 +34,7 @@ export default function Login() {
               </div>
               <div>
                 <GoogleLogin
-                  clientId="595384762593-s8u1lg7m0frjla6gpl0kgkl8307l18rq.apps.googleusercontent.com"
+                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                   buttonText="Login with Google"
                   onSuccess={success}
                   cookiePolicy="single_host_origin"
