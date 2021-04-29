@@ -27,7 +27,7 @@ export default function Login() {
               <div>
                 <h1 class="login title">Study Dates</h1>
                 <p class="login text">
-                  A new way to view and schedule classes apart from NJIT's website system. Connect
+                  A new way to view and schedule classes apart from NJIT's website <br />system. Connect
                   your Google account to log in and start scheduling. <br /> Read more below about
                   the features.
                 </p>
