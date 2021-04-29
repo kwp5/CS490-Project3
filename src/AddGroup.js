@@ -18,27 +18,18 @@ export default function Grouping() {
       .then((responseData) => {
         setGroupData(responseData.class);
       });
-  
   }
-  
-  var divStyle = {
-  color: 'RED',
-  WebkitTransition: 'all', // note the capital 'W' here
-  msTransition: 'all' 
-};
-  
-console.log(groupData);
+
+  console.log(groupData);
   return (
-    <div>
+    <div class="form">
       <label for="invUser">User's Email:</label>
       <input ref={inputRef} type="text" name="new_email" />
       <br />
       <button type="button" onClick={inviteUser}>
         Add to Group
       </button>
-      <div style={divStyle}> User is In classes: {groupData} </div>
+      <div> {groupData} </div>
     </div>
   );
 }
-
-
