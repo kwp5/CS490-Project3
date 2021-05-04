@@ -29,8 +29,6 @@ class mockClassTest(unittest.TestCase):
         for test in self.success_test_params:
             actual = (mock_class(test[INPUT]["class"]))
             expected = test[EXPECTED]
-            print(actual)
-            print(expected)
             self.assertNotEqual(actual, expected)
 
 

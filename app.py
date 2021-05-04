@@ -60,21 +60,12 @@ def invite():
     if 'email' in request.args:  # pylint: disable=no-else-return
         new_email = request.args['email']
         class1 = {
-<<<<<<< HEAD
         "class": "CS490",
         "section":"004",
         "start time": "12:30 pm",
         "end time": "1:50pm",
         "day": "Tuesday"
     }
-=======
-            "class": "CS490",
-            "section":"004",
-            "start time": "12:30 pm",
-            "end time": "1:50pm",
-            "day": "Tuesday"
-        }
->>>>>>> main
         return mock_class(class1)
     else:  # pylint: disable=no-else-return
         return Response("Error: No Email Provided", status=400)
