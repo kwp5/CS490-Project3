@@ -59,7 +59,13 @@ def invite():
     """ EDIT THIS FUNCTION TO RUN A QUERY FOR ALL STUDNETS CLASSES in the future as well"""
     if 'email' in request.args:  # pylint: disable=no-else-return
         new_email = request.args['email']
-        class1 = {"class": "CS490"}
+        class1 = {
+        "class": "CS490",
+        "section":"004",
+        "start time": "12:30 pm",
+        "end time": "1:50pm",
+        "day": "Tuesday"
+    }
         return mock_class(class1)
     else:  # pylint: disable=no-else-return
         return Response("Error: No Email Provided", status=400)
@@ -75,9 +81,15 @@ def invite():
 
 def mock_class(class1):
     """ Mocked data for scheduled classes"""
-    class1 = {"class": "CS490"}
-    mocked_class = json.dumps(class1)
-    return mocked_class
+    class1 = {
+        "class": "CS490",
+        "section":"004",
+        "start time": "12:30 pm",
+        "end time": "1:50pm",
+        "day": "Tuesday"
+    }
+    mock_class = json.dumps(class1)
+    return mock_class
 
 
 if __name__ == '__main__':
