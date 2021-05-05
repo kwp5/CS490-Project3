@@ -1,3 +1,6 @@
+# CS490-Project3 Sprint 1 link
+Heroku link: https://cs490-project3-group9.herokuapp.com/
+
 # CS490-Project3 Sprint 2 link
 Heroku link: https://cs490-project3-group9-sprint2.herokuapp.com/
 
