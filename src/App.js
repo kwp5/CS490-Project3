@@ -138,8 +138,16 @@ function Add(props) {
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [day, setDay] = useState();
+  
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    
+    console.log(course);
+    console.log(section);
+    console.log(startTime);
+    console.log(endTime);
+    console.log(day);
+    
     alert(`Submitted new course: ${course}`)
   }
   
