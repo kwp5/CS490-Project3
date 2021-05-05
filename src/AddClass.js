@@ -13,6 +13,8 @@ export default function Add(props) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     
+    
+    
     console.log(course);
     console.log(section);
     console.log(startTime);

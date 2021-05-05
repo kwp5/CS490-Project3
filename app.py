@@ -39,8 +39,8 @@ def login():
         print("return user")
     return user
 def block_pull():
-    """ not a clue -- I think peter did this""" '''this pulls data so the DEV understand the data '''
-    user = request.get_json()['user']['name'] 
+    """ not a clue -- I think peter did this"""
+    user = request.get_json()['user']['name']
     user_data = DB.session.query(models.Person).filter_by(username=user).first() # pylint: disable=no-member
     print(str(user_data))
 def class_info(user):
@@ -90,7 +90,13 @@ def mock_class(class1):
     }
     mock_class = json.dumps(class1)
     return mock_class
-
+@APP.route('/login', methods=['POST'])
+def add_class():
+    name = request.get_json()['class']['name']
+    section = request.get_json()['class']['section']
+    start_time =  int(request.get_json()['class']['start time'])
+    end_time = int(request.get_json()['class']['end time'])
+    
 
 if __name__ == '__main__':
     import models
