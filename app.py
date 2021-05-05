@@ -39,8 +39,8 @@ def login():
         print("return user")
     return user
 def block_pull():
-    """ not a clue -- I think peter did this"""
-    user = request.get_json()['user']['name']
+    """ not a clue -- I think peter did this""" '''this pulls data so the DEV understand the data '''
+    user = request.get_json()['user']['name'] 
     user_data = DB.session.query(models.Person).filter_by(username=user).first() # pylint: disable=no-member
     print(str(user_data))
 def class_info(user):

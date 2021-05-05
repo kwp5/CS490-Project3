@@ -26,4 +26,4 @@ class Blocks(db.Model):
         self.timeEnd = timeEnd
         self.day_of_week = day_of_week
     def __repr__(self):
-        return "<Blocks(className='%s',classSection='%s',timeStart='%s',timeEnd='%s',day_of_week = '%s', studentID='%s')>" % (self.className, self.classSection,self.timeStart, self.timeEnd, self.day_of_week, self.studentID)
+        return "<Blocks(className='%s',classSection='%s',timeStart='%s',timeEnd='%s',day_of_week = '%s', studentID='%s')>" % (self.className, self.classSection, self.timeStart, self.timeEnd, self.day_of_week, self.studentID)
